@@ -1,5 +1,11 @@
 import Input from '@/components/Input'
+import axios from 'axios';
 import React, { useCallback, useState } from 'react'
+import {signIn} from 'next-auth/react';
+import { useRouter } from 'next/router';
+
+import {FcGoogle} from 'react-icons/fc';
+import {FaGithub} from 'react-icons/fa';
 
 
 const Auth = () => {
@@ -8,12 +14,37 @@ const Auth = () => {
     const [password,setPassword] = useState("");
 
     const [varient,setVarient] = useState("login");
+    const router = useRouter();
 
     const toggleVarient = useCallback(()=>{
         setVarient((currentVarient)=>{
             return currentVarient === "login"? "register" : "login";
         })
     },[])
+
+    const login = useCallback(async ()=>{
+        try {
+            const response = await signIn('credentials',{email,password,redirect: false,callbackUrl: '/'})
+            router.push('/');
+        } catch (error) {
+            console.log(error);
+        }
+    },[email,password])
+
+    const register = useCallback(async ()=>{
+        try {
+            const response = await axios.post('api/register',{
+                name,
+                email,
+                password
+            })
+            login();
+        } catch (error) {
+            console.log(error);
+        }
+    },[name,email,password])
+
+
   return (
     <div className='relative h-full w-full bg-[url("/images/hero.jpg")] bg-cover bg-fixed bg-no-repeat bg-center'>
         <div className='bg-black w-full h-full lg:bg-opacity-50'>
@@ -63,9 +94,46 @@ const Auth = () => {
                             py-3
                             mt-6
                         '
+                        onClick={varient === 'login' ? login : register}
                         >
                             {varient === 'login' ? "Login" : "Register"}
                         </button>
+                        <div className='flex flex-row gap-4 items-center justify-center mt-5'>
+                            <div
+                            onClick={()=>signIn('google',{callbackUrl: '/'})}
+                            className='
+                                w-10
+                                h-10
+                                rounded-full
+                                hover:opacity-80
+                                transition
+                                bg-white
+                                flex
+                                justify-center
+                                items-center
+                            '
+                            >
+                            <FcGoogle size={30}/>
+                            </div>
+
+                            <div
+                            onClick={()=>signIn('github', {callbackUrl: '/'})}
+                            className='
+                                w-10
+                                h-10
+                                rounded-full
+                                hover:opacity-80
+                                transition
+                                bg-white
+                                flex
+                                justify-center
+                                items-center
+                            '
+                            >
+                            <FaGithub size={30}/>
+                            </div>
+
+                        </div>
                         <p className='text-neutral-500 mt-8'>
                             {
                                 varient === 'login'? "first time using Netflix?" : "Already have an account?"
