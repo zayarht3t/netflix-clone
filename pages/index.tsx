@@ -5,6 +5,9 @@ import { NextPageContext } from 'next'
 import useCurrentuser from '@/hooks/useCurrentUser'
 import Navbar from '@/components/Navbar'
 import BillBoard from '@/components/BillBoard'
+import Movielist from '@/components/Movielist'
+import useMovielist from '@/hooks/useMovielist'
+import useFavorite from '@/hooks/useFavorite'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,13 +29,17 @@ export async function getServerSideProps(context: NextPageContext){
 }
 
 export default function Home() {
-  const {data: user} = useCurrentuser();
-  console.log(user);
+  const {data: movies = []} = useMovielist();
+  const {data: favorites = []} = useFavorite();
 
   return (
     <>
       <Navbar/>
       <BillBoard/>
+      <div>
+        <Movielist title='Trending Now' data={movies}/>
+        <Movielist title='My List' data={favorites}/>
+      </div>
     </>
   )
 }
