@@ -2,7 +2,6 @@ import Input from '@/components/Input'
 import axios from 'axios';
 import React, { useCallback, useState } from 'react'
 import {signIn} from 'next-auth/react';
-import { useRouter } from 'next/router';
 
 import {FcGoogle} from 'react-icons/fc';
 import {FaGithub} from 'react-icons/fa';
@@ -14,7 +13,6 @@ const Auth = () => {
     const [password,setPassword] = useState("");
 
     const [varient,setVarient] = useState("login");
-    const router = useRouter();
 
     const toggleVarient = useCallback(()=>{
         setVarient((currentVarient)=>{
@@ -24,8 +22,7 @@ const Auth = () => {
 
     const login = useCallback(async ()=>{
         try {
-            const response = await signIn('credentials',{email,password,redirect: false,callbackUrl: '/'})
-            router.push('/');
+            const response = await signIn('credentials',{email,password,callbackUrl: '/profile'})
         } catch (error) {
             console.log(error);
         }
@@ -100,7 +97,7 @@ const Auth = () => {
                         </button>
                         <div className='flex flex-row gap-4 items-center justify-center mt-5'>
                             <div
-                            onClick={()=>signIn('google',{callbackUrl: '/'})}
+                            onClick={()=>signIn('google',{callbackUrl: '/profile'})}
                             className='
                                 w-10
                                 h-10
@@ -117,7 +114,7 @@ const Auth = () => {
                             </div>
 
                             <div
-                            onClick={()=>signIn('github', {callbackUrl: '/'})}
+                            onClick={()=>signIn('github', {callbackUrl: '/profile'})}
                             className='
                                 w-10
                                 h-10

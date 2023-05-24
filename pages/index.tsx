@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { getSession, signOut } from 'next-auth/react'
 import { NextPageContext } from 'next'
+import useCurrentuser from '@/hooks/useCurrentUser'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,10 +24,11 @@ export async function getServerSideProps(context: NextPageContext){
 }
 
 export default function Home() {
+  const {data: user} = useCurrentuser();
+  console.log(user);
+
   return (
-    <div className='text-green-400'>
-      Netflix clone
-      <div className='bg-white' onClick={()=>signOut()}>logout</div>
-    </div>
+    <>
+    </>
   )
 }
