@@ -4,6 +4,7 @@ import { getSession, signOut } from 'next-auth/react'
 import { NextPageContext } from 'next'
 import useCurrentuser from '@/hooks/useCurrentUser'
 import Navbar from '@/components/Navbar'
+import BillBoard from '@/components/BillBoard'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -31,27 +32,7 @@ export default function Home() {
   return (
     <>
       <Navbar/>
-      <div className='h-96'></div>
-      <div className='h-96'></div>
-      <div className='h-96'></div>
-      <div className='h-96'></div>
-      <div className='h-96'></div>
-      <div className='h-96'></div>
-      <div className='h-96'></div>
-      <div className='h-96'></div>
-      <div className='h-96'></div>
-      <div className='h-96'></div>
-      <div className='h-96'></div>
-      <div className='h-96'></div>
-      <div className='h-96'></div>
-      <div className='h-96'></div><div className='h-96'></div>
-      <div className='h-96'></div>
-      <div className='h-96'></div>
-      <div className='h-96'></div>
-      <div className='h-96'></div>
-      <div className='h-96'></div>
-      <div className='h-96'></div>
-      <div className='h-96'></div>
+      <BillBoard/>
     </>
   )
 }
