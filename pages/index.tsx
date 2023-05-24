@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import { getSession, signOut } from 'next-auth/react'
 import { NextPageContext } from 'next'
 import useCurrentuser from '@/hooks/useCurrentUser'
+import Navbar from '@/components/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,6 +30,28 @@ export default function Home() {
 
   return (
     <>
+      <Navbar/>
+      <div className='h-96'></div>
+      <div className='h-96'></div>
+      <div className='h-96'></div>
+      <div className='h-96'></div>
+      <div className='h-96'></div>
+      <div className='h-96'></div>
+      <div className='h-96'></div>
+      <div className='h-96'></div>
+      <div className='h-96'></div>
+      <div className='h-96'></div>
+      <div className='h-96'></div>
+      <div className='h-96'></div>
+      <div className='h-96'></div>
+      <div className='h-96'></div><div className='h-96'></div>
+      <div className='h-96'></div>
+      <div className='h-96'></div>
+      <div className='h-96'></div>
+      <div className='h-96'></div>
+      <div className='h-96'></div>
+      <div className='h-96'></div>
+      <div className='h-96'></div>
     </>
   )
 }
