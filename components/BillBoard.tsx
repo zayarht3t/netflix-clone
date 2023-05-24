@@ -2,6 +2,7 @@ import useBillBoard from '@/hooks/useBillBoard'
 import React from 'react'
 
 import {AiOutlineInfoCircle} from 'react-icons/ai'
+import PlayButton from './PlayButton';
 
 const BillBoard = () => {
     const {data} = useBillBoard();
@@ -27,6 +28,7 @@ const BillBoard = () => {
                 {data?.description}
             </p>
             <div className='flex flex-row gap-3 md:mt-4 mt-3 items-center'>
+                <PlayButton movieId={data?.id}/>
                 <button
                 className='
                     bg-white
