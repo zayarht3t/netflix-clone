@@ -8,6 +8,8 @@ import BillBoard from '@/components/BillBoard'
 import Movielist from '@/components/Movielist'
 import useMovielist from '@/hooks/useMovielist'
 import useFavorite from '@/hooks/useFavorite'
+import InfoModal from '@/components/InfoModal'
+import useInfoModal from '@/hooks/useInfoModal'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -31,9 +33,11 @@ export async function getServerSideProps(context: NextPageContext){
 export default function Home() {
   const {data: movies = []} = useMovielist();
   const {data: favorites = []} = useFavorite();
+  const{isOpen,closeModal}= useInfoModal();
 
   return (
     <>
+      <InfoModal visible={isOpen} onClose={()=>closeModal()}/>
       <Navbar/>
       <BillBoard/>
       <div>

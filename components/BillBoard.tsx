@@ -1,11 +1,17 @@
 import useBillBoard from '@/hooks/useBillBoard'
-import React from 'react'
+import React, { useCallback } from 'react'
 
 import {AiOutlineInfoCircle} from 'react-icons/ai'
 import PlayButton from './PlayButton';
+import useInfoModal from '@/hooks/useInfoModal';
 
 const BillBoard = () => {
     const {data} = useBillBoard();
+    const {openModal} = useInfoModal();
+
+    const handleOpenModal = useCallback(()=>{
+        openModal(data?.id);
+    },[openModal,data?.id])
   return (
     <div className='relative h-[56.25vw]'>
         <video
@@ -30,6 +36,7 @@ const BillBoard = () => {
             <div className='flex flex-row gap-3 md:mt-4 mt-3 items-center'>
                 <PlayButton movieId={data?.id}/>
                 <button
+                onClick={handleOpenModal}
                 className='
                     bg-white
                     text-white
