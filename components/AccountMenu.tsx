@@ -10,14 +10,14 @@ const AccountMenu:React.FC<AccountMenuProps> = ({visible}) => {
     if(!visible){
         return null;
     }
-    const {data} = useCurrentuser();
+    const {data: currentUser} = useCurrentuser();
   return (
     <div className='bg-black w-56 absolute top-14 right-0 py-5 border-2 border-gray-800 flex '>
         <div className='flex flex-col'>
             <div className='flex flex-row  px-3 items-center gap-3 group/item w-full'>
                 <img src="/images/default-blue.png" className='w-8 rounded-md' alt="" />
                 <p className='text-white text-sm group-hover/item:underline'>
-                    {data?.currentUser?.name}
+                    {currentUser?.name}
                 </p>
                 
             </div>
