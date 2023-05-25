@@ -1,4 +1,4 @@
-import useCurrentuser from '@/hooks/useCurrentUser';
+import useCurrentUser from '@/hooks/useCurrentUser';
 import { NextPageContext } from 'next';
 import { getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
@@ -22,7 +22,7 @@ export async function getServerSideProps(context: NextPageContext){
   }
 
 const Profile = () => {
-    const {data: user} = useCurrentuser();
+    const {data: user} = useCurrentUser();
     const router = useRouter();
   return (
     <div className='flex  items-center h-full justify-center'>

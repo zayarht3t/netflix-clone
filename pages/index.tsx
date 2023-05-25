@@ -1,8 +1,7 @@
-import Image from 'next/image'
+
 import { Inter } from 'next/font/google'
-import { getSession, signOut } from 'next-auth/react'
+import { getSession } from 'next-auth/react'
 import { NextPageContext } from 'next'
-import useCurrentuser from '@/hooks/useCurrentUser'
 import Navbar from '@/components/Navbar'
 import BillBoard from '@/components/BillBoard'
 import Movielist from '@/components/Movielist'

@@ -1,4 +1,4 @@
-import useCurrentuser from '@/hooks/useCurrentUser'
+import useCurrentUser from '@/hooks/useCurrentUser'
 import useFavorite from '@/hooks/useFavorite'
 import axios from 'axios'
 import React, { useCallback, useMemo } from 'react'
@@ -9,7 +9,7 @@ interface FavoriteIdProps {
 }
 
 const AddFavoriteButton:React.FC<FavoriteIdProps> = ({id}) => {
-    const {data: currentUser,mutate} = useCurrentuser();
+    const {data: currentUser,mutate} = useCurrentUser();
     const {mutate: mutateFavorite} = useFavorite();
     const isFavorite = useMemo(()=>{
         const list = currentUser?.favoriteIds || [];
