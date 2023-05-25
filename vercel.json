@@ -1,9 +1,6 @@
 {
-    "build": {
-      "env": {
-        "PRISMA_GENERATE": "true"
-      },
-      "postbuild": "prisma generate"
-    }
+    "builds": [
+      { "src": "vercel-build.sh", "use": "@vercel/static-build" }
+    ]
   }
   
