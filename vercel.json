@@ -3,9 +3,7 @@
       "env": {
         "PRISMA_GENERATE": "true"
       },
-      "scripts": {
-        "prebuild": "prisma generate"
-      }
+      "postbuild": "prisma generate"
     }
   }
   
