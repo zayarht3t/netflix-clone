@@ -1,6 +1,6 @@
 {
     "builds": [
-      { "src": "vercel-build.sh", "use": "@vercel/static-build", "config": { "outputDirectory": "dist" } }
+      { "src": "vercel-build.sh", "use": "@vercel/static-build", "config": { "output": "dist" } }
     ]
   }
   
