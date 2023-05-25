@@ -1,2 +1,2 @@
 # Run the prisma generate command
-prisma generate
+npx prisma generate
